@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="640" viewBox="0 0 480 640">
+  <defs>
+    <linearGradient id="p" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6efe5"/>
+      <stop offset="1" stop-color="#efe6d9"/>
+    </linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b7a57"/>
+      <stop offset="1" stop-color="#2e5d43"/>
+    </linearGradient>
+  </defs>
+  <!-- Pouch -->
+  <rect x="40" y="20" width="400" height="600" rx="28" fill="url(#p)" stroke="#d8cabc"/>
+  <rect x="40" y="80" width="400" height="36" rx="18" fill="#d8cabc" opacity=".45"/>
+  <!-- Brand strip -->
+  <rect x="60" y="120" width="360" height="80" rx="16" fill="url(#g)"/>
+  <text x="240" y="170" text-anchor="middle" font-family="Poppins, Arial" font-weight="700" font-size="28" fill="#fff">The Taste of Jharkhand</text>
+  <!-- Leaf emblem -->
+  <circle cx="240" cy="282" r="70" fill="#fff" stroke="#e2d8cb"/>
+  <path d="M240 230c-8 20-28 36-28 56 0 16 12 28 28 28s28-12 28-28c0-20-20-36-28-56z" fill="#3b7a57"/>
+  <!-- Product name -->
+  <text x="240" y="380" text-anchor="middle" font-family="Poppins, Arial" font-weight="700" font-size="36" fill="#2e2a25">Munga Saag</text>
+  <text x="240" y="410" text-anchor="middle" font-family="Poppins, Arial" font-size="16" fill="#6a5f57">100% Herbal • Made in Jharkhand</text>
+  <!-- Price band -->
+  <rect x="120" y="458" width="240" height="56" rx="14" fill="#ffffff" stroke="#e2d8cb"/>
+  <text x="240" y="494" text-anchor="middle" font-family="Poppins, Arial" font-weight="700" font-size="22" fill="#b07d4f">₹199</text>
+</svg>
+
+
