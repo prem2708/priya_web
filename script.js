@@ -171,6 +171,136 @@
   if(new URLSearchParams(location.search).get('demo')==='1'){
     addToCart({id:'munga-saag',name:'Munga Saag',price:60,thumb:'assets/WhatsApp%20Image%202025-10-28%20at%204.25.24%20PM.jpeg'});
   }
+
+  // Product image front/back toggle
+  document.addEventListener('click', function(e) {
+    const btn = e.target;
+    if (!(btn instanceof Element)) return;
+    if (btn.classList.contains('toggle-back')) {
+      const card = btn.closest('.product-card');
+      if (!card) return;
+      const img = card.querySelector('.product-image');
+      if (!img) return;
+      const isFront = !btn.classList.contains('showing-back');
+      const front = btn.getAttribute('data-front');
+      const back = btn.getAttribute('data-back');
+      if (isFront) {
+        img.src = back;
+        btn.classList.add('showing-back');
+        btn.textContent = 'Front';
+      } else {
+        img.src = front;
+        btn.classList.remove('showing-back');
+        btn.textContent = 'Back';
+      }
+    }
+  });
+
+  // Product Modal logic
+  const modal = document.getElementById('productModal');
+  const modalImg = document.getElementById('modalSliderImg');
+  const modalPrev = document.getElementById('modalSliderPrev');
+  const modalNext = document.getElementById('modalSliderNext');
+  const modalTitle = document.getElementById('modalProductTitle');
+  const modalPrice = document.getElementById('modalProductPrice');
+  const modalAdd = document.getElementById('modalAddToCart');
+  const modalClose = document.getElementById('productModalClose');
+  const modalBackdrop = document.getElementById('modalBackdrop');
+
+  let modalState = null; // {id, images:[], idx, title, price}
+
+  function openModalWithProduct(card) {
+    if (!card) return;
+    const id = card.getAttribute('data-product-id');
+    const front = card.getAttribute('data-front');
+    const back = card.getAttribute('data-back');
+    const title = card.querySelector('.product-title')?.innerText || '';
+    const price = card.querySelector('.price')?.innerText || '₹60';
+    const images = [front];
+    if (back) images.push(back);
+    modalState = {id, images, idx:0, title, price};
+    setModalContent();
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-modal', 'true');
+    modal.tabIndex = -1;
+    setTimeout(()=>modal.focus(),80);
+    document.body.style.overflow = 'hidden';
+  }
+  function setModalContent() {
+    if (!modalState) return;
+    modalImg.src = modalState.images[modalState.idx];
+    modalTitle.textContent = modalState.title;
+    modalPrice.textContent = modalState.price;
+    modalAdd.setAttribute('data-id', modalState.id);
+    // Set modal ingredient
+    var ingr = document.getElementById('modalIngredient');
+    if (ingr) ingr.textContent = modalState.title;
+    if (modalState.images.length < 2) {
+      modalPrev.style.visibility = 'hidden';
+      modalNext.style.visibility = 'hidden';
+    } else {
+      modalPrev.style.visibility = 'visible';
+      modalNext.style.visibility = 'visible';
+    }
+  }
+  function closeModal() {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-modal', 'false');
+    document.body.style.overflow = '';
+    modalState = null;
+  }
+  modalPrev.addEventListener('click', ()=>{
+    if (!modalState) return;
+    modalState.idx = (modalState.idx - 1 + modalState.images.length) % modalState.images.length;
+    setModalContent();
+  });
+  modalNext.addEventListener('click', ()=>{
+    if (!modalState) return;
+    modalState.idx = (modalState.idx + 1) % modalState.images.length;
+    setModalContent();
+  });
+  modalClose.addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e){
+    if (modal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) closeModal();
+  });
+  document.addEventListener('click', function(e){
+    const tgt = e.target;
+    if (tgt.classList.contains('open-modal')) {
+      const card = tgt.closest('.product-card');
+      openModalWithProduct(card);
+    }
+    if (tgt.id === 'modalAddToCart') {
+      // Add to cart for modal
+      if (!modalState) return;
+      const card = document.querySelector(`.product-card[data-product-id="${modalState.id}"]`);
+      if (card) {
+        // Use primary image for thumb (front)
+        const name = card.querySelector('.product-title')?.innerText || '';
+        const price = card.querySelector('.price')?.innerText.replace(/[^\d]/g,'') || '60';
+        const thumb = modalState.images[0];
+        addToCart({id:modalState.id, name, price, thumb});
+        closeModal();
+      }
+    }
+  });
+
+  // Hero slider (auto slide all front images)
+  (function heroSliderInit() {
+    const slider = document.getElementById('heroSlider');
+    if (!slider) return;
+    const slides = slider.querySelectorAll('.hero-slide-img');
+    let idx = 0;
+    function showSlide(i) {
+      slides.forEach((img, k) => img.style.display = (k === i ? 'block' : 'none'));
+    }
+    function nextSlide() {
+      idx = (idx + 1) % slides.length;
+      showSlide(idx);
+    }
+    showSlide(idx);
+    setInterval(nextSlide, 2800);
+  })();
 })();
 
 

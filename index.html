@@ -51,7 +51,14 @@
           <a href="#products" class="btn btn-primary scroll-link">Shop Now</a>
         </div>
         <div class="hero-media">
-          <img src="assets/WhatsApp%20Image%202025-10-28%20at%204.25.24%20PM.jpeg" alt="Munga Saag Packet" class="hero-image" />
+          <div id="heroSlider" class="hero-slider">
+            <img src="assets/1.jpeg" alt="Munga Leaf Product" class="hero-slide-img" style="display:block" />
+            <img src="assets/2.jpeg" alt="Kataai Saag Product" class="hero-slide-img" style="display:none" />
+            <img src="assets/3.jpeg" alt="Futkal Saag Product" class="hero-slide-img" style="display:none" />
+            <img src="assets/4.jpeg" alt="Sarla Saag Product" class="hero-slide-img" style="display:none" />
+            <img src="assets/5.jpeg" alt="Chakod Saag Product" class="hero-slide-img" style="display:none" />
+            <img src="assets/6.jpeg" alt="Koinar Saag Product" class="hero-slide-img" style="display:none" />
+          </div>
         </div>
       </div>
     </section>
@@ -61,31 +68,56 @@
       <div class="container">
         <h2 class="section-title">Our Products</h2>
         <div class="product-grid">
-          <!-- Product Card -->
-          <article class="product-card" data-product-id="munga-saag">
-            <div class="product-media">
-              <img src="assets/WhatsApp%20Image%202025-10-28%20at%204.25.24%20PM.jpeg" alt="Munga Saag Packet" class="product-image" />
-            </div>
+          <article class="product-card" data-product-id="product-1" data-front="assets/1.jpeg">
+            <div class="product-media"><img src="assets/1.jpeg" alt="Munga Leaf" class="product-thumb" /></div>
             <div class="product-body">
-              <h3 class="product-title">Munga Saag</h3>
-              <div class="product-rating" aria-label="4 out of 5 stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span class="muted">☆</span>
-              </div>
-              <p class="product-desc">
-                Rich in nutrients and heritage. 100% Herbal, Made in Jharkhand.
-              </p>
-              <div class="product-meta">
-                <span class="price">₹60</span>
-                <span class="badge">Herbal</span>
-              </div>
-              <div class="product-actions">
-                <button class="btn btn-outline add-to-cart" data-id="munga-saag" data-name="Munga Saag" data-price="60">Add to Cart</button>
-                <button class="btn btn-primary buy-now" data-id="munga-saag" data-name="Munga Saag" data-price="60">Buy Now</button>
-              </div>
-              <small class="note">100% Herbal • Made in Jharkhand</small>
+              <h3 class="product-title">Munga Leaf</h3>
+              <div class="product-meta"><span class="price">₹60</span><span class="badge">Herbal</span></div>
+              <div class="product-actions"><button class="btn btn-outline open-modal" data-id="product-1">View</button></div>
+            </div>
+          </article>
+          <article class="product-card" data-product-id="product-2" data-front="assets/2.jpeg" data-back="assets/2b.jpeg">
+            <div class="product-media"><img src="assets/2.jpeg" alt="Kataai Saag" class="product-thumb" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Kataai Saag</h3>
+              <div class="product-meta"><span class="price">₹60</span><span class="badge">Herbal</span></div>
+              <div class="product-actions"><button class="btn btn-outline open-modal" data-id="product-2">View</button></div>
+            </div>
+          </article>
+          <article class="product-card" data-product-id="product-3" data-front="assets/3.jpeg" data-back="assets/3b.jpeg">
+            <div class="product-media"><img src="assets/3.jpeg" alt="Futkal Saag" class="product-thumb" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Futkal Saag</h3>
+              <div class="product-meta"><span class="price">₹60</span><span class="badge">Herbal</span></div>
+              <div class="product-actions"><button class="btn btn-outline open-modal" data-id="product-3">View</button></div>
+            </div>
+          </article>
+          <article class="product-card" data-product-id="product-4" data-front="assets/4.jpeg" data-back="assets/4b.jpeg">
+            <div class="product-media"><img src="assets/4.jpeg" alt="Sarla Saag" class="product-thumb" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Sarla Saag</h3>
+              <div class="product-meta"><span class="price">₹60</span><span class="badge">Herbal</span></div>
+              <div class="product-actions"><button class="btn btn-outline open-modal" data-id="product-4">View</button></div>
+            </div>
+          </article>
+          <article class="product-card" data-product-id="product-5" data-front="assets/5.jpeg" data-back="assets/5b.jpeg">
+            <div class="product-media"><img src="assets/5.jpeg" alt="Chakod Saag" class="product-thumb" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Chakod Saag</h3>
+              <div class="product-meta"><span class="price">₹60</span><span class="badge">Herbal</span></div>
+              <div class="product-actions"><button class="btn btn-outline open-modal" data-id="product-5">View</button></div>
+            </div>
+          </article>
+          <article class="product-card" data-product-id="product-6" data-front="assets/6.jpeg" data-back="assets/6b.jpeg">
+            <div class="product-media"><img src="assets/6.jpeg" alt="Koinar Saag" class="product-thumb" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Koinar Saag</h3>
+              <div class="product-meta"><span class="price">₹60</span><span class="badge">Herbal</span></div>
+              <div class="product-actions"><button class="btn btn-outline open-modal" data-id="product-6">View</button></div>
             </div>
           </article>
         </div>
+        <!-- END product grid -->
       </div>
     </section>
 
@@ -210,6 +242,25 @@
 
     <!-- Toast Notification -->
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Product Modal (popup) -->
+    <div id="productModal" class="product-modal" aria-modal="true" role="dialog" tabindex="-1" style="display:none;">
+      <div class="product-modal-backdrop" id="modalBackdrop"></div>
+      <div class="product-modal-content" role="document">
+        <button class="modal-close" id="productModalClose" aria-label="Close">&times;</button>
+        <div class="modal-slider-wrapper">
+          <button class="modal-slider-arrow" id="modalSliderPrev" aria-label="Previous image">&#10094;</button>
+          <img id="modalSliderImg" src="" alt="Product" class="modal-slider-img" />
+          <button class="modal-slider-arrow" id="modalSliderNext" aria-label="Next image">&#10095;</button>
+        </div>
+        <div class="modal-info">
+          <h3 id="modalProductTitle"></h3>
+          <p class="modal-ingredient-row">Ingredient: <span class="modal-ingredient" id="modalIngredient">Munga Leaf</span></p>
+          <div class="modal-product-meta"><span id="modalProductPrice"></span></div>
+          <button class="btn btn-primary" id="modalAddToCart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
